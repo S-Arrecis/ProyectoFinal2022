@@ -28,7 +28,6 @@ CREATE TABLE `usuario` (
   `id_usuario` int NOT NULL AUTO_INCREMENT,
   `primerNombre` varchar(45) NOT NULL,
   `segundoNombre` varchar(45) DEFAULT NULL,
-  `tercerNombre` varchar(45) DEFAULT NULL,
   `PrimerApellido` varchar(45) NOT NULL,
   `segundoApellido` varchar(45) DEFAULT NULL,
   `fechaNacimiento` date NOT NULL,
@@ -36,7 +35,6 @@ CREATE TABLE `usuario` (
   `password` varchar(10) NOT NULL,
   `celular` varchar(8) NOT NULL,
   `correo` varchar(25) NOT NULL,
-  `token` int NOT NULL,
   `imagen` longblob NOT NULL,
   PRIMARY KEY (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -60,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-25 18:33:52
+-- Dump completed on 2022-05-25 20:30:47
