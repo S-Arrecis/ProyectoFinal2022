@@ -25,8 +25,9 @@ public class Tutorial_Estructura_Datos_UMGV1 {
         Conexion a = new Conexion();
         //Correo correo = new Correo();
         Connection connection = a.getConnection();
-        a.insertarDatos(datos, foto);
-
+        //a.insertarDatos(datos, foto);
+        a.leerDato("mroberto", "1234");
+        a.leerDato("mariam", "123");
         //a.insertarDatos(datos, foto);
        //correo.ejecutarCorreo("667788", "kpriceh_b839y@hxsni.com");
     }
