@@ -28,7 +28,7 @@ public class Tutorial_Estructura_Datos_UMGV1 {
         File foto = new File("d.txt");
         String datos[] = {"Mario", "Roberto", "Martinez", "Arriaga", "1999-10-22", "mroberto", "12345", "88885577", "kpriceh_b839y@hxsni.com"};
 
-        System.out.println("Hello World! (0_0)");
+        System.out.println("Hello World! (0_0)/");
 
         Conexion a = new Conexion();
         //Correo correo = new Correo();
