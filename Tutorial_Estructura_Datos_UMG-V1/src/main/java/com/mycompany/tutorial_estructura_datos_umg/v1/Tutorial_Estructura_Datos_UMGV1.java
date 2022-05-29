@@ -13,26 +13,21 @@ import java.sql.Connection;
  * @author Arrecis
  */
 public class Tutorial_Estructura_Datos_UMGV1 {
-    
-    
-    
+
     public static void main(String[] args) {
         File foto = new File("programacion.png");
         String datos[] = {"Maria", "Roberta", "Margot", "Valenzuela", "1999-08-02", "mariam", "123", "77889944", "kpriceh_b839y@hxsni.com"};
-
+        String leer[] = {"mariam", "123", "777332"};
         System.out.println("Hello World! (0_0)/");
 
         Conexion a = new Conexion();
         //Correo correo = new Correo();
         Connection connection = a.getConnection();
         //a.insertarDatos(datos, foto);
-        a.leerDato("mroberto", "1234");
-        a.leerDato("mariam", "123");
+        //a.leerDato(leer);
+        a.leerDato(leer);
         //a.insertarDatos(datos, foto);
-       //correo.ejecutarCorreo("667788", "kpriceh_b839y@hxsni.com");
+        //correo.ejecutarCorreo("667788", "kpriceh_b839y@hxsni.com");
     }
-    
-    public static void foto(){
-        
-    }
+
 }

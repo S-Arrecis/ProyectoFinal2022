@@ -27,7 +27,7 @@ public class Conexion {
     private PreparedStatement consulta;
     private ResultSet respuesta;
     private  Connection conexion = null;
-    
+    private Correo correo = new Correo(); // clase para enviar el codigo de verificacion
     public Connection getConnection(){
         conexion = null;
         try{
@@ -81,24 +81,26 @@ public class Conexion {
 
     }
     /***
-     * 
-     * @param usuario nombre de usuario para iniciar Sesión
-     * @param clave   contraseña del usuario para iniciar Sesión
+     * @param datos recibimos un arreglo de 3 parametros 
+     * datos[0] = usuario para iniciar sesion
+     * datos[1] = contraseña para iniciar sesion
+     * datos[2] = codigo de verificacion para iniciar sesion
      *  @author Arrecis
      */
-    public void leerDato(String usuario, String clave) {
+    public void leerDato(String [] datos) {
         conexion = null;
         try {
             conexion = getConnection();
             consulta = conexion.prepareStatement("SELECT * FROM usuario WHERE usuario=? AND password =?");
-            consulta.setString(1, usuario);
-            consulta.setString(2, clave);
+            consulta.setString(1, datos[0]);
+            consulta.setString(2, datos[1]);
 
             respuesta = consulta.executeQuery();
 
             if (respuesta.next()) {
                 // obtenemos resultados de la consulta
-                JOptionPane.showMessageDialog(null, "Bienvenido "+respuesta.getString("usuario"));
+                JOptionPane.showMessageDialog(null, "Enviando código de validacion al correo "+respuesta.getString("correo"));
+                correo.ejecutarCorreo(datos[2],respuesta.getString("correo"));
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario y/o contraseña incorrecta!!");
             }
