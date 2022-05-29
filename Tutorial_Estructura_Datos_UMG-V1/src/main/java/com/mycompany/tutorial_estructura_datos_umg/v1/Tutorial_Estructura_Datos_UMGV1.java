@@ -5,16 +5,8 @@
 
 package com.mycompany.tutorial_estructura_datos_umg.v1;
 
-import java.awt.Image;
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -25,17 +17,15 @@ public class Tutorial_Estructura_Datos_UMGV1 {
     
     
     public static void main(String[] args) {
-        File foto = new File("d.txt");
-        String datos[] = {"Mario", "Roberto", "Martinez", "Arriaga", "1999-10-22", "mroberto", "12345", "88885577", "kpriceh_b839y@hxsni.com"};
+        File foto = new File("programacion.png");
+        String datos[] = {"Maria", "Roberta", "Margot", "Valenzuela", "1999-08-02", "mariam", "123", "77889944", "kpriceh_b839y@hxsni.com"};
 
         System.out.println("Hello World! (0_0)/");
 
         Conexion a = new Conexion();
         //Correo correo = new Correo();
         Connection connection = a.getConnection();
-        //a.insertarDatos(datos);
-
-       
+        a.insertarDatos(datos, foto);
 
         //a.insertarDatos(datos, foto);
        //correo.ejecutarCorreo("667788", "kpriceh_b839y@hxsni.com");
