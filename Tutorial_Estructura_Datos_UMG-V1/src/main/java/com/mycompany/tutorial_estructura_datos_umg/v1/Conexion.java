@@ -21,9 +21,11 @@ import javax.swing.JOptionPane;
  */
 public class Conexion {
     //?autoReconnet=true&useSSL=false
+    String Nombre,Correo;
+    boolean entrar= false;
     private static final String Direccion = "jdbc:mysql://localhost:3306/Proyecto_Final";
     private static final String user = "root";
-    private static final String contraseña = "5518";
+    private static final String contraseña = "root";
     private PreparedStatement consulta;
     private ResultSet respuesta;
     private  Connection conexion = null;
@@ -69,9 +71,9 @@ public class Conexion {
 
             int resultado = consulta.executeUpdate();
             if (resultado > 0) {
-                JOptionPane.showMessageDialog(null, "Datos insertados con éxito!!");
+                JOptionPane.showMessageDialog(null, "Usuario Registrado con éxito!!");
             } else {
-                JOptionPane.showMessageDialog(null, "No se pudo insertar los datos intente otra vez");
+                JOptionPane.showMessageDialog(null, "No se pudo registrar el usuario, intente otra vez");
             }
             conexion.close();
 
@@ -101,8 +103,12 @@ public class Conexion {
                 // obtenemos resultados de la consulta
                 JOptionPane.showMessageDialog(null, "Enviando código de validacion al correo "+respuesta.getString("correo"));
                 correo.ejecutarCorreo(datos[2],respuesta.getString("correo"));
+                this.setEntrar(true);
+                this.setCorreo(respuesta.getString("correo"));
+                this.setNombre(respuesta.getString("usuario"));
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario y/o contraseña incorrecta!!");
+                 this.setEntrar(false);
             }
 
             conexion.close();
@@ -112,4 +118,33 @@ public class Conexion {
         }
 
     }
+
+    public boolean isEntrar() {
+        return entrar;
+    }
+
+    public void setEntrar(boolean entrar) {
+        this.entrar = entrar;
+    }
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    public String getCorreo() {
+        return Correo;
+    }
+
+    public void setCorreo(String Correo) {
+        this.Correo = Correo;
+    }
+    
+    
+    
+    
+    
 }

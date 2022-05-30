@@ -19,7 +19,6 @@ public class Tutorial_Estructura_Datos_UMGV1 {
         String datos[] = {"Maria", "Roberta", "Margot", "Valenzuela", "1999-08-02", "mariam", "123", "77889944", "kpriceh_b839y@hxsni.com"};
         String leer[] = {"mariam", "123", "777332"};
         System.out.println("Hello World! (0_0)/");
-
         Conexion a = new Conexion();
         //Correo correo = new Correo();
         Connection connection = a.getConnection();

@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -17,8 +18,10 @@ import javax.swing.JOptionPane;
  * @author Lennyn
  */
 public class Login extends javax.swing.JFrame {
-
-    /**
+Conexion conexion;
+String Datos[]; 
+String Nombre,correo;
+boolean entrar= false;/**
      * Creates new form Login
      */
     public Login() {
@@ -138,10 +141,9 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
      
-//    NuevoUsuario Nuevo = new NuevoUsuario();
-//
-//Nuevo.setVisible(true);
-//this.dispose();
+    NuevoUsuario Nuevo = new NuevoUsuario();
+Nuevo.setVisible(true);
+this.dispose();
         
         
         
@@ -149,26 +151,84 @@ public class Login extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton2ActionPerformed
 String Usuario = "";
-   String contraseña =""; 
+String contraseña =""; 
     
+
+
+
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-   
+
+       conexion  = new Conexion();
+      Connection connection = conexion.getConnection();   
+      
      Usuario = jTextField1.getText();     
          contraseña = "";
        for (int i = 0; i < jPasswordField1.getPassword().length; i++) {
             contraseña += jPasswordField1.getPassword()[i];
        } 
+       
+       String codigo = GenerarCodigo();
 
- leer();
+Datos = new String[]{Usuario,contraseña,codigo};
        
+     conexion.leerDato(Datos);
+     
+     
+       Nombre = conexion.getNombre();
+       correo = conexion.getCorreo();
+       entrar = conexion.isEntrar();
+     
        
+        if (entrar==true) {
+          String input = JOptionPane.showInputDialog("Ingrese el token enviado a"+correo);       
+      if(Integer.parseInt(codigo) == Integer.parseInt(input) ){
+                         JOptionPane.showMessageDialog(null, "BIENVENIDO "+Nombre.toUpperCase());
+                        dispose();
+                        // aqui se llama al programa despues de logearse
+                        } else{JOptionPane.showMessageDialog(this, "no sea imbecil y escriba bien esa su mierda");  
+      
+      this.jTextField1.setText("");
+      this.jPasswordField1.setText("");
+      this.jLabel2.setVisible(true);
+      this.jLabel3.setVisible(true);
+      
+      }    
+        }
+   
        
+      
        
-       
-       
+ //leer();
+  
 
     }//GEN-LAST:event_jButton1ActionPerformed
-String usuario = "Users.txt";
+
+   private void comporobarToken(){
+  
+   
+   
+   
+   } 
+    
+    
+    
+    
+    
+    
+   private String GenerarCodigo(){
+   
+   int Valor =(int)(Math.random()*100000 +100000);
+                            System.out.println(Valor);  
+   
+   String codigo = String.valueOf(Valor);
+    return codigo;
+   
+   } 
+    
+
+    
+    String usuario = "Users.txt";
 private String[] datos= null;
 
 int token = 123456;
