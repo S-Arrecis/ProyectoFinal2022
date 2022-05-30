@@ -22,7 +22,16 @@
         <artifactId>mysql-connector-java</artifactId>
         <version>8.0.29</version>
     </dependency>
-
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>jlayer-1.0.1</artifactId>
+            <version>SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <properties>
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -31,6 +40,11 @@
         <maven.compiler.target>15</maven.compiler.target>
     </properties>
     <name>Tutorial_Estructura_Datos_UMG_V1.0</name>
-    
-    
+    <repositories>
+        <repository>
+            <id>unknown-jars-temp-repo</id>
+            <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
+            <url>file:${project.basedir}/lib</url>
+        </repository>
+    </repositories>
 </project>
