@@ -26,6 +26,28 @@
         <version>1.4</version>
     </dependency>
     <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-swing</artifactId>
+        <version>15</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/javax.media/jai_core -->
+    <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+    <!-- https://mvnrepository.com/artifact/com.kenai.nbpwr/javax-media-opengl -->
+    <!-- https://mvnrepository.com/artifact/javax.media.jai/com.springsource.javax.media.jai.codec -->
+    <!-- https://mvnrepository.com/artifact/javax.media/jmf -->
+    <dependency>
+        <groupId>javax.media</groupId>
+        <artifactId>jmf</artifactId>
+        <version>2.1.1e</version>
+    </dependency>
+
+
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-media</artifactId>
+        <version>18</version>
+    </dependency>
+    <dependency>
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
         <version>8.0.29</version>
