@@ -5,9 +5,18 @@
  */
 package com.mycompany.tutorial_estructura_datos_umg.v1;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -15,6 +24,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -453,6 +463,67 @@ String Dia ="", Mes="",Año;
 
       
     }
+    
+    //metodo para generar PDF - yenner
+    public void generarpdf(){
+        conexion = new Conexion();
+        Connection connection = conexion.getConnection();
+        Nombre = jTextField6.getText().trim();
+        SNombre = jTextField4.getText().trim();
+        Apellido = jTextField2.getText();
+        SApellido = jTextField7.getText();
+        Usuario = jTextField1.getText();
+        Correo = jTextField3.getText();
+        Telefono = jTextField8.getText();
+      
+        try {
+            String ruta = System.getProperty("user.home");
+            //String fname = "src/pdfs/" + Nombre + ".pdf";
+            Document doc = new Document(PageSize.LETTER);
+            //PdfWriter.getInstance(doc, new FileOutputStream(fname));
+            PdfWriter.getInstance(doc, new FileOutputStream(ruta + "/Documents/U/5th Semester/progra3/"
+                    + "ProyectoFinal2022-main/ProyectoFinal2022-main/Tutorial_Estructura_Datos_UMG-V1/"
+                    + "src/main/java/pdfs/" + Usuario + ".pdf"));//direccion donde se encuentra el proyecto para guardar el pdf en el paquete "pdfs"
+            doc.open();
+            
+            Paragraph titulo = new Paragraph("Tutorial Estuctura de Datos UMG\n\n",
+                    FontFactory.getFont("arial",//tipo de fuente
+                            22, //tamaño de fuente
+                            Font.BOLD, //tipo de fuente en negrita
+                            BaseColor.BLUE //color de texto
+                    )
+                    );
+            titulo.setAlignment(Element.ALIGN_CENTER);//orientacion del texto
+            doc.add(titulo);
+            Paragraph linea = new Paragraph("\n");
+            doc.add(linea);
+            Paragraph para = new Paragraph(Nombre + " se ha generado tu perfil en la base de datos exitosamente,"
+                    + " aca se adjunta la informacion: \n\n", FontFactory.getFont("arial", 13));//this will add a paragraph
+            doc.add(para);
+            Paragraph para2 = new Paragraph("Nombres: " + Nombre +" " + SNombre + "\n", FontFactory.getFont("arial", 13));
+            Paragraph para3 = new Paragraph("Apellidos: " + Apellido +" " + SApellido + "\n", FontFactory.getFont("arial", 13));
+            Paragraph para4 = new Paragraph("Usuario: " + Usuario + "\n", FontFactory.getFont("arial", 13));
+            Paragraph para5 = new Paragraph("E-mail: " + Correo + "\n", FontFactory.getFont("arial", 13));
+            Paragraph para6 = new Paragraph("Cel/Tel: " + Telefono + "\n", FontFactory.getFont("arial", 13));
+            doc.add(para2);
+            doc.add(para3);
+            doc.add(para4);
+            doc.add(para5);
+            doc.add(para6);
+            //doc.add(Image.getInstance("src/images/KWAS.jpg"));
+            
+//            com.itextpdf.text.Image image = com.itextpdf.text.Image.getInstance("imagen");
+//            image.setAbsolutePosition(384 , 580);//this determines the position of the image, width and height of the page
+//            image.scaleAbsolute(160, 160);//this determines the scale of the image, widht and height
+//            doc.add(com.itextpdf.text.Image.getInstance(image));
+            
+            doc.close();
+            System.out.println("PDF creado");
+            JOptionPane.showMessageDialog(null, "PDF Creado con exito");
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
 
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -461,6 +532,7 @@ String Dia ="", Mes="",Año;
        // fecha = this.jSpinField1.getToolTipText() + " / " + this.jMonthChooser1.getToolTipText() + " / " + this.jYearChooser1.getToolTipText();
      //   foto = foto;
         compararContraseñas();
+        generarpdf();
      //   System.out.println(Usuario + " / " + Nombres + " / " + Apellidos + " / " + contraseña + " / " + fecha + " / " + foto);
         
         

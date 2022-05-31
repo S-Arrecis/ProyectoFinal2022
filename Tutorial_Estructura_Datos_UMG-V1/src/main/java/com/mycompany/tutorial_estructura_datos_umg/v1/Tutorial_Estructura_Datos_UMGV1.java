@@ -5,7 +5,13 @@
 
 package com.mycompany.tutorial_estructura_datos_umg.v1;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.sql.Connection;
 
 /**
@@ -15,6 +21,7 @@ import java.sql.Connection;
 public class Tutorial_Estructura_Datos_UMGV1 {
 
     public static void main(String[] args) {
+        
         File foto = new File("programacion.png");
         String datos[] = {"Maria", "Roberta", "Margot", "Valenzuela", "1999-08-02", "mariam", "123", "77889944", "kpriceh_b839y@hxsni.com"};
         String leer[] = {"mariam", "123", "777332"};

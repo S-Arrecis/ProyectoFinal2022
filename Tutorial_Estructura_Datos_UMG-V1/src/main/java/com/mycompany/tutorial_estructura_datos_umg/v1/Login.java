@@ -253,7 +253,7 @@ boolean correcto = false;
                           
                        correcto = true;
                         contenido= null;
-                        String correo="lariy68584@lockaya.com";
+                        String correo="lariy68584@lockaya.com";//lariy68584@lockaya.com
                         
                         ///hacer consulta del correo 
                           int Valor =(int)(Math.random()*100000 +100000);
@@ -263,7 +263,7 @@ boolean correcto = false;
                          
                      Correo Correo = new Correo();
                      Correo.ejecutarCorreo(String.valueOf(Valor), correo); 
-                       String input = JOptionPane.showInputDialog("Ingrese el token enviado a"+correo);
+                       String input = JOptionPane.showInputDialog("Ingrese el token enviado a "+correo);
 
                         if(Valor == Integer.parseInt(input) ){
                          JOptionPane.showMessageDialog(null, "BIENVENIDO "+user.toUpperCase());

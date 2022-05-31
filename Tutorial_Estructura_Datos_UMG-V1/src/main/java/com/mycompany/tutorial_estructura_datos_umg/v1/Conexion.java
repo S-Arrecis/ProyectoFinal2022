@@ -25,7 +25,7 @@ public class Conexion {
     boolean entrar= false;
     private static final String Direccion = "jdbc:mysql://localhost:3306/Proyecto_Final";
     private static final String user = "root";
-    private static final String contraseña = "root";
+    private static final String contraseña = "*54168217Ny";
     private PreparedStatement consulta;
     private ResultSet respuesta;
     private  Connection conexion = null;
