@@ -25,7 +25,7 @@ public class Conexion {
     boolean entrar= false;
     private static final String Direccion = "jdbc:mysql://localhost:3306/Proyecto_Final";
     private static final String user = "root";
-    private static final String contraseña = "*54168217Ny";
+    private static final String contraseña = "root";
     private PreparedStatement consulta;
     private ResultSet respuesta;
     private  Connection conexion = null;
@@ -72,6 +72,9 @@ public class Conexion {
             int resultado = consulta.executeUpdate();
             if (resultado > 0) {
                 JOptionPane.showMessageDialog(null, "Usuario Registrado con éxito!!");
+Login login = new Login();            
+login.setVisible(true);
+
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo registrar el usuario, intente otra vez");
             }

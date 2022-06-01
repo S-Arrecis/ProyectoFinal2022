@@ -89,6 +89,7 @@ File Foto;
         jTextField6 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -282,7 +283,7 @@ File Foto;
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 650, 140, 40));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 640, 140, 40));
 
         jTextField6.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
@@ -316,6 +317,16 @@ File Foto;
             }
         });
         getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 180, 50));
+
+        jButton1.setBackground(new java.awt.Color(204, 204, 0));
+        jButton1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jButton1.setText("Regresar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 690, -1, -1));
 
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 730));
@@ -454,7 +465,9 @@ String Dia ="", Mes="",Año;
        //   JOptionPane.showMessageDialog(null, "Registrando los datos del Usuario " + Nombre);   
            
            conexion.insertarDatos(Datos, Foto);
-           
+           this.dispose();
+                 generarpdf();
+                 
            
           
             //FrmLogin log = new FrmLogin();
@@ -527,19 +540,10 @@ String Dia ="", Mes="",Año;
 
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      //  Usuario = this.jTextField1.getText();
-     //   contraseña = this.jPasswordField1.getToolTipText();
-       // fecha = this.jSpinField1.getToolTipText() + " / " + this.jMonthChooser1.getToolTipText() + " / " + this.jYearChooser1.getToolTipText();
-     //   foto = foto;
+
         compararContraseñas();
-        generarpdf();
-     //   System.out.println(Usuario + " / " + Nombres + " / " + Apellidos + " / " + contraseña + " / " + fecha + " / " + foto);
-        
-        
-        
-        
-        
-        
+  
+  
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
@@ -613,6 +617,12 @@ String Dia ="", Mes="",Año;
      jLabel14.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jTextField8KeyReleased
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+Login login = new Login();
+login.setVisible(true);
+this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -650,6 +660,7 @@ String Dia ="", Mes="",Año;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
