@@ -18,6 +18,8 @@ import java.util.concurrent.ThreadFactory;
 
 public class LeerQR extends javax.swing.JFrame implements Runnable, ThreadFactory {
 
+    
+    Login login = new Login();
     private WebcamPanel panel = null;
     private Webcam webcam = null;
 
@@ -27,6 +29,7 @@ public class LeerQR extends javax.swing.JFrame implements Runnable, ThreadFactor
     public LeerQR() {
         initComponents();
         initWebcam();
+         login.setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -71,7 +74,7 @@ public class LeerQR extends javax.swing.JFrame implements Runnable, ThreadFactor
     }// </editor-fold>//GEN-END:initComponents
 
     private void result_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_result_fieldActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_result_fieldActionPerformed
 
     /**
@@ -157,6 +160,11 @@ public class LeerQR extends javax.swing.JFrame implements Runnable, ThreadFactor
 
             if (result != null) {
                 result_field.setText(result.getText());
+          
+            // login.setVisible(true);
+               
+                login.setjTextField(result_field.getText());
+                   this.dispose();
             }
         } while (true);
     }
