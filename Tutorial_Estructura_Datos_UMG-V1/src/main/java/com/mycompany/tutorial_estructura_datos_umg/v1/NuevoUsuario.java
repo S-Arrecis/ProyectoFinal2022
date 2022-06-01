@@ -453,7 +453,7 @@ String Dia ="", Mes="",Año;
             }else{ Mes =String.valueOf(mes);}
        
             año = jYearChooser1.getYear();
-            Año=String.valueOf(año);
+            Año=String.valueOf(año);    
             fecha = Año+"-"+Mes+"-"+Dia;
             Usuario = jTextField1.getText();
             Telefono = jTextField8.getText();
@@ -463,10 +463,10 @@ String Dia ="", Mes="",Año;
           System.out.println(Datos[0]+","+Datos[1]+","+Datos[2]+","+Datos[3]+","+Datos[4]+","+Datos[5]+","+Datos[6]+","+Datos[7]+","+Datos[8]);
            
        //   JOptionPane.showMessageDialog(null, "Registrando los datos del Usuario " + Nombre);   
-           
+           generarpdf();
            conexion.insertarDatos(Datos, Foto);
            this.dispose();
-                 generarpdf();
+              
                  
            
           
