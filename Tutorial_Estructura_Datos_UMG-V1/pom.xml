@@ -5,16 +5,13 @@
     <artifactId>MensajeCorreo</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <dependencies>
-<<<<<<< HEAD
-         
+    <dependencies>     
         <!-- https://mvnrepository.com/artifact/com.toedter/jcalendar -->
         <dependency>
             <groupId>com.toedter</groupId>
             <artifactId>jcalendar</artifactId>
             <version>1.4</version>
         </dependency>
-=======
       <dependency>
   <groupId>com.github.sarxos</groupId>
   <artifactId>webcam-capture</artifactId>
@@ -46,7 +43,6 @@
     <artifactId>jcalendar</artifactId>
     <version>1.4</version>
 </dependency>
->>>>>>> aad0b4012a165a64a6a85b78003e9b0ab37a4392
   
         <dependency>
             <groupId>com.twilio.sdk</groupId>
