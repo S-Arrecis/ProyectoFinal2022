@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
@@ -49,6 +50,14 @@ boolean entrar= false;/**
         this.jTextField1.setText(jTextField);
         this.jLabel2.setVisible(false);
     }
+
+    public void setjPasswordField1(String jp) {
+        this.jPasswordField1.setText(jp);
+        this.jLabel3.setVisible(false);
+         
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -204,7 +213,7 @@ Datos = new String[]{Usuario,contraseña,codigo};
                          JOptionPane.showMessageDialog(null, "BIENVENIDO "+Nombre.toUpperCase());
                         dispose();
                         // aqui se llama al programa despues de logearse
-                        } else{JOptionPane.showMessageDialog(this, "no sea imbecil y escriba bien esa su mierda");  
+                        } else{JOptionPane.showMessageDialog(this, "Codigo de confirmación incorrecto");  
       
       this.jTextField1.setText("");
       this.jPasswordField1.setText("");
@@ -224,12 +233,7 @@ lq.setVisible(true);
 this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-   private void comporobarToken(){
-  
-   
-   
-   
-   } 
+
     
     
     

@@ -74,7 +74,11 @@ public class Conexion {
                 JOptionPane.showMessageDialog(null, "Usuario Registrado con éxito!!");
 Login login = new Login();            
 login.setVisible(true);
+File fichero = new File(foto.getPath());
 
+fichero.delete();
+
+                System.out.println("esta es la ruta"+foto);
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo registrar el usuario, intente otra vez");
             }

@@ -15,6 +15,8 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -24,10 +26,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.accessibility.AccessibleContext;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JRootPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -40,7 +48,7 @@ public class NuevoUsuario extends javax.swing.JFrame {
 String Datos[];
 Conexion conexion;
 File Foto;
-
+TomarFoto tomarfoto = new TomarFoto();
     public NuevoUsuario() {
         initComponents();
         setLocationRelativeTo(null);
@@ -52,8 +60,22 @@ File Foto;
         
         jLabel1.setIcon(Fondo);
         jLabel9.setIcon(AddUser);
+        
+
     }
 
+
+    void RI(ImageIcon img){
+    jLabel9.setIcon(img);
+    
+    
+    }
+    
+    
+
+
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,6 +100,7 @@ File Foto;
         jTextField3 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
@@ -191,6 +214,16 @@ File Foto;
         jLabel13.setEnabled(false);
         jLabel13.setOpaque(true);
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 190, 20));
+
+        jButton3.setBackground(new java.awt.Color(51, 255, 255));
+        jButton3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jButton3.setText("Tomar Foto");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 110, -1));
 
         jTextField2.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -469,11 +502,7 @@ String Dia ="", Mes="",Año;
               
                  
            
-          
-            //FrmLogin log = new FrmLogin();
-            // log.setVisible(true);
-            // dispose();
-
+       
       
     }
     
@@ -623,6 +652,59 @@ login.setVisible(true);
 this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+Listener(); 
+   tomarfoto.setVisible(true);
+    
+  
+   
+
+ // tomarfoto.ventan(this,jLabel9);
+
+
+ 
+    }//GEN-LAST:event_jButton3ActionPerformed
+boolean escuchar = true;
+    private void Listener(){
+    
+     Thread d = new Thread() {
+
+            @Override
+            public void run() {
+                
+              while(escuchar){
+              
+              jLabel9.setIcon(tomarfoto.iconoFoto);
+              Foto = tomarfoto.salidaimagen;
+              
+                  try {
+                      Thread.sleep(500);
+                  } catch (InterruptedException ex) {
+                      Logger.getLogger(NuevoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                  }
+              }  
+                
+                
+                
+                
+            }
+     
+     
+    
+    
+    
+    
+    };
+            d.start();
+             }
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -662,6 +744,7 @@ this.dispose();// TODO add your handling code here:
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -676,7 +759,7 @@ this.dispose();// TODO add your handling code here:
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    public javax.swing.JLabel jLabel9;
     private com.toedter.calendar.JMonthChooser jMonthChooser1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
