@@ -26,6 +26,7 @@ public class TomarFoto extends javax.swing.JFrame {
     Dimension dimension1 = WebcamResolution.VGA.getSize();
     Webcam webcam = Webcam.getDefault();
     WebcamPanel webcamPanel = new WebcamPanel(webcam, dimension, false);
+     Icon iconoFoto;
     public TomarFoto() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -33,6 +34,8 @@ public class TomarFoto extends javax.swing.JFrame {
         webcamPanel.setFitArea(true);
         panelfoto.setLayout(new FlowLayout());
         panelfoto.add(webcamPanel);
+         ImageIcon AddUser = new ImageIcon("AddUser.png");
+         iconoFoto=AddUser;
     EncenderCamara();
     }
  
@@ -217,7 +220,7 @@ private void EncenderCamara(){
         lblfoto.setIcon(null);
  }   
     
-    Icon iconoFoto;
+   
     
     private void TOMARFOTOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TOMARFOTOActionPerformed
     NuevoUsuario NUv = null;
