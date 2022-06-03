@@ -5,11 +5,14 @@
  */
 package com.mycompany.tutorial_estructura_datos_umg.v1;
 
+import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -23,6 +26,7 @@ public class Login extends javax.swing.JFrame {
 Conexion conexion;
 String Datos[]; 
 String Nombre,correo;
+ImageIcon foto=null;
 boolean entrar= false;/**
      * Creates new form Login
      */
@@ -118,6 +122,11 @@ boolean entrar= false;/**
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 510, 190, -1));
 
         jPasswordField1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPasswordField1MouseClicked(evt);
+            }
+        });
         jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jPasswordField1KeyReleased(evt);
@@ -233,6 +242,19 @@ lq.setVisible(true);
 this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jPasswordField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseClicked
+        conexion  = new Conexion();
+      Connection connection = conexion.getConnection();   
+    try {
+        setFoto(conexion.buscarFoto(jTextField1.getText()));
+        jLabel4.setIcon(getFoto());
+        jLabel4.setIcon((new ImageIcon(foto.getImage().getScaledInstance(jLabel4.getWidth(), jLabel4.getHeight(), Image.SCALE_SMOOTH))));
+        jLabel4.updateUI();
+    } catch (IOException ex) {
+        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }//GEN-LAST:event_jPasswordField1MouseClicked
+
 
     
     
@@ -315,6 +337,15 @@ boolean correcto = false;
          JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta ");
      }
         
+    }
+
+    public ImageIcon getFoto() {
+        jLabel4.setIcon((new ImageIcon(foto.getImage().getScaledInstance(jLabel4.getWidth(), jLabel4.getHeight(), Image.SCALE_SMOOTH))));
+        return foto;
+    }
+
+    public void setFoto(ImageIcon foto) {
+        this.foto = foto;
     }
     
    

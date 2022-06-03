@@ -1,56 +1,67 @@
-
 package com.mycompany.tutorial_estructura_datos_umg.v1;
 
 import java.awt.HeadlessException;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
- *  Descripción: Esta clase nos ayuda a conectarnos con MYSQL
- *  creando conexion
- *  
+ * Descripción: Esta clase nos ayuda a conectarnos con MYSQL creando conexion
+ *
  * @author Arrecis
  */
 public class Conexion {
+
     //?autoReconnet=true&useSSL=false
-    String Nombre,Correo;
-    boolean entrar= false;
+    String Nombre, Correo;
+    boolean entrar = false;
     private static final String Direccion = "jdbc:mysql://localhost:3306/Proyecto_Final";
     private static final String user = "root";
-    private static final String contraseña = "root";
+    private static final String contraseña = "5518";
     private PreparedStatement consulta;
     private ResultSet respuesta;
-    private  Connection conexion = null;
+    private Connection conexion = null;
     private Correo correo = new Correo(); // clase para enviar el codigo de verificacion
-    public Connection getConnection(){
+    ImageIcon foto = null;
+    InputStream entrada = null;
+
+    public Connection getConnection() {
         conexion = null;
-        try{
-            
+        try {
+
             Class.forName("com.mysql.jdbc.Driver");
-           conexion = (Connection) DriverManager.getConnection(Direccion,user,contraseña);
-           //JOptionPane.showMessageDialog(null,"Conexión éxitosa");
-            
-        }catch(ClassNotFoundException | SQLException e){
-            JOptionPane.showMessageDialog(null,"Error en la conexion de tipo: "+e);
+            conexion = (Connection) DriverManager.getConnection(Direccion, user, contraseña);
+            //JOptionPane.showMessageDialog(null,"Conexión éxitosa");
+
+        } catch (ClassNotFoundException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error en la conexion de tipo: " + e);
         }
         return conexion;
     }
-    /***
+
+    /**
+     * *
      * Descripcion: Este meétodo recibe 2 parametros para la insersion de datos
      * en la base de datos usuarios
+     *
      * @param datos un Array de String donde contiene datos personales
-     *  (primerNombre,segundoNombre,primerApellido,segundoApellido,fechaNacimiento,usuario,password,celular,correo)
-     * @param foto enviar la foto en tipo archivo usando el parametro File foto = escoger.getSelectFile();
-     
-     *  @author Arrecis
+     * (primerNombre,segundoNombre,primerApellido,segundoApellido,fechaNacimiento,usuario,password,celular,correo)
+     * @param foto enviar la foto en tipo archivo usando el parametro File foto
+     * = escoger.getSelectFile();
+     *
+     * @author Arrecis
      */
     public void insertarDatos(String[] datos, File foto) {
         conexion = null;
@@ -72,13 +83,13 @@ public class Conexion {
             int resultado = consulta.executeUpdate();
             if (resultado > 0) {
                 JOptionPane.showMessageDialog(null, "Usuario Registrado con éxito!!");
-Login login = new Login();            
-login.setVisible(true);
-File fichero = new File(foto.getPath());
+                Login login = new Login();
+                login.setVisible(true);
+                File fichero = new File(foto.getPath());
 
-fichero.delete();
+                fichero.delete();
 
-                System.out.println("esta es la ruta"+foto);
+                System.out.println("esta es la ruta" + foto);
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo registrar el usuario, intente otra vez");
             }
@@ -89,14 +100,15 @@ fichero.delete();
         }
 
     }
-    /***
-     * @param datos recibimos un arreglo de 3 parametros 
-     * datos[0] = usuario para iniciar sesion
-     * datos[1] = contraseña para iniciar sesion
-     * datos[2] = codigo de verificacion para iniciar sesion
-     *  @author Arrecis
+
+    /**
+     * *
+     * @param datos recibimos un arreglo de 3 parametros datos[0] = usuario para
+     * iniciar sesion datos[1] = contraseña para iniciar sesion datos[2] =
+     * codigo de verificacion para iniciar sesion
+     * @author Arrecis
      */
-    public void leerDato(String [] datos) {
+    public void leerDato(String[] datos) {
         conexion = null;
         try {
             conexion = getConnection();
@@ -108,14 +120,14 @@ fichero.delete();
 
             if (respuesta.next()) {
                 // obtenemos resultados de la consulta
-                JOptionPane.showMessageDialog(null, "Enviando código de validacion al correo "+respuesta.getString("correo"));
-                correo.ejecutarCorreo(datos[2],respuesta.getString("correo"));
+                JOptionPane.showMessageDialog(null, "Enviando código de validacion al correo " + respuesta.getString("correo"));
+                correo.ejecutarCorreo(datos[2], respuesta.getString("correo"));
                 this.setEntrar(true);
                 this.setCorreo(respuesta.getString("correo"));
                 this.setNombre(respuesta.getString("usuario"));
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario y/o contraseña incorrecta!!");
-                 this.setEntrar(false);
+                this.setEntrar(false);
             }
 
             conexion.close();
@@ -126,6 +138,31 @@ fichero.delete();
 
     }
 
+    public ImageIcon buscarFoto(String usuario) throws IOException{
+        conexion = null;
+        try {
+            conexion = getConnection();
+            consulta = conexion.prepareStatement("select *from usuario where usuario =?");
+            consulta.setString(1, usuario);
+
+            respuesta = consulta.executeQuery();
+            BufferedImage binario =null;
+            if (respuesta.next()) {
+                // obtenemos resultados de la consulta
+                System.out.println("entro xd");
+                entrada = respuesta.getBinaryStream(11);
+                binario =  ImageIO.read(entrada);
+                foto = new ImageIcon(binario);
+            }
+          
+            conexion.close();
+
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Problemas con la conexión a su Base de Datos");
+        }
+      
+      return foto;
+    }
     public boolean isEntrar() {
         return entrar;
     }
@@ -149,9 +186,5 @@ fichero.delete();
     public void setCorreo(String Correo) {
         this.Correo = Correo;
     }
-    
-    
-    
-    
-    
+
 }
