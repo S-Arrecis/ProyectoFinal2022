@@ -219,7 +219,9 @@ Datos = new String[]{Usuario,contraseña,codigo};
         if (entrar==true) {
           String input = JOptionPane.showInputDialog("Ingrese el token enviado a"+correo);       
       if(Integer.parseInt(codigo) == Integer.parseInt(input) ){
+          Menu menu = new Menu((ImageIcon) this.jLabel4.getIcon(),Nombre.toUpperCase());
                          JOptionPane.showMessageDialog(null, "BIENVENIDO "+Nombre.toUpperCase());
+                         menu.setVisible(true);
                         dispose();
                         // aqui se llama al programa despues de logearse
                         } else{JOptionPane.showMessageDialog(this, "Codigo de confirmación incorrecto");  
@@ -256,6 +258,7 @@ this.dispose();
     }//GEN-LAST:event_jPasswordField1MouseClicked
 
 
+    
     
     
     
