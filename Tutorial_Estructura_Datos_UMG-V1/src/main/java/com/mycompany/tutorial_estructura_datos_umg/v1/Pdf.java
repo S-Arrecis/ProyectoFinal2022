@@ -41,7 +41,7 @@ public class Pdf {
             fotoQR = new CodeQR();
             fotoQR.GenerarQR(user);
            PdfWriter.getInstance(documento,new FileOutputStream("FormularioInscripcion.pdf"));
-            Image cabeza = Image.getInstance(String.format("header.png"));
+            Image cabeza = Image.getInstance(String.format("header.jpg"));
             cabeza.scaleToFit(245,1000);
             cabeza.scaleAbsoluteWidth(600);
             Image Foto = Image.getInstance(String.format("Codigo.png"));
