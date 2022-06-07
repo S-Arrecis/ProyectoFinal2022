@@ -420,7 +420,7 @@ TomarFoto tomarfoto = new TomarFoto();
         jLabel8.setVisible(false);
     }//GEN-LAST:event_jPasswordField2KeyReleased
 
-    private FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPEG/PNG", "jpeg", "png");
+    private FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPEG/PNG/JPG", "jpeg", "png","jpg");
     JFileChooser buscar = new JFileChooser();
     String NombreArchivo = "";
     String Ruta = "";

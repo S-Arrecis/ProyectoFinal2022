@@ -29,7 +29,7 @@ public class Conexion {
     boolean entrar = false;
     private static final String Direccion = "jdbc:mysql://localhost:3306/Proyecto_Final";
     private static final String user = "root";
-    private static final String contraseña = "root";
+    private static final String contraseña = "5518";
     private PreparedStatement consulta;
     private ResultSet respuesta;
     private Connection conexion = null;
@@ -98,7 +98,9 @@ public class Conexion {
         } catch (HeadlessException | FileNotFoundException | SQLException e) {
             JOptionPane.showMessageDialog(null, "Problemas con la conexión a su Base de Datos");
         }
-
+        Pdf pdf = new Pdf();
+        //pdf.iniciarEntrega();
+        pdf.GenerarFormulario(datos, foto);
     }
 
     /**

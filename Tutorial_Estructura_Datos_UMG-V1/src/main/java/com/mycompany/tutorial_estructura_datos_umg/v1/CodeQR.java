@@ -24,7 +24,7 @@ public class CodeQR {
    public void GenerarQR(String [] datos) {
         try {
             String content = datos[0]+" "+datos[1];
-            String filePath ="QR/";
+            String filePath ="";
             String fileType = "png";
             int size = 225;
             UUID uuid = UUID.randomUUID();
