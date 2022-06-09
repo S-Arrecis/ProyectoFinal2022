@@ -26,20 +26,32 @@ public class JFrameReproductor extends javax.swing.JFrame {
     private MediaView view;
     private Media media;
     private MediaPlayer mediaPlayer;
-    private String rutaVideo = "C:\\Users\\keidy\\Downloads\\video1.mp4";
-
+   
+ private String rutaVideo;
+ String Usuario= "";
+ ImageIcon foto = new ImageIcon();
     
-    public JFrameReproductor() {
+    public JFrameReproductor( String Nvideo,ImageIcon usuario,String User ) {
+        
+        Usuario = User;
+        foto = usuario;
+        rutaVideo = "Videos/"+Nvideo;
         initComponents();
         this.setLocationRelativeTo(null);
-        //crearEscena(rutaVideo);
+        crearEscena(rutaVideo);
         setResizable(false);
         setLocationRelativeTo(null);
         
         panel.setLayout(new BorderLayout());
         panel.add(jfxPanel, BorderLayout.CENTER);
         this.setLocationRelativeTo(null);
+        
+        
 
+    }
+
+    private JFrameReproductor() {
+       
     }
 
     
@@ -75,6 +87,7 @@ public class JFrameReproductor extends javax.swing.JFrame {
         volumen = new javax.swing.JSlider();
         tituloVideo = new javax.swing.JLabel();
         btnOpen = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         panel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -115,6 +128,13 @@ public class JFrameReproductor extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Regresar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -132,7 +152,9 @@ public class JFrameReproductor extends javax.swing.JFrame {
                 .addComponent(volumen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(tituloVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addGap(39, 39, 39))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,6 +168,10 @@ public class JFrameReproductor extends javax.swing.JFrame {
                     .addComponent(tituloVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnOpen))
                 .addContainerGap(22, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(19, 19, 19))
         );
 
         panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -154,7 +180,7 @@ public class JFrameReproductor extends javax.swing.JFrame {
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 848, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,6 +241,15 @@ public class JFrameReproductor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnOpenActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+Menu m = new Menu(foto,Usuario);
+
+m.setVisible(true);
+ mediaPlayer.stop();
+this.dispose();
+ 
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -256,6 +291,7 @@ public class JFrameReproductor extends javax.swing.JFrame {
     private javax.swing.JButton btnPause;
     private javax.swing.JButton btnPlay;
     private javax.swing.JButton btnStop;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel panel;
     private javax.swing.JLabel tituloVideo;

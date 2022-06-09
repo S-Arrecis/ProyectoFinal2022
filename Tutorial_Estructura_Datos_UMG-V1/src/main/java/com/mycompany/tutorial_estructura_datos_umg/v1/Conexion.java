@@ -1,5 +1,6 @@
 package com.mycompany.tutorial_estructura_datos_umg.v1;
 
+import com.itextpdf.text.BadElementException;
 import java.awt.HeadlessException;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -29,7 +30,7 @@ public class Conexion {
     boolean entrar = false;
     private static final String Direccion = "jdbc:mysql://localhost:3306/Proyecto_Final";
     private static final String user = "root";
-    private static final String contraseña = "5518";
+    private static final String contraseña = "root";
     private PreparedStatement consulta;
     private ResultSet respuesta;
     private Connection conexion = null;
@@ -63,7 +64,7 @@ public class Conexion {
      *
      * @author Arrecis
      */
-    public void insertarDatos(String[] datos, File foto) {
+    public void insertarDatos(String[] datos, File foto) throws BadElementException, IOException {
         conexion = null;
         try {
             FileInputStream archivo = new FileInputStream(foto);

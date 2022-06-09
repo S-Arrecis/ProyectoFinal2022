@@ -166,7 +166,6 @@ public class LeerQR extends javax.swing.JFrame implements Runnable, ThreadFactor
             String dat[] = result_field.getText().split(" ");
                 login.setjTextField(dat[0]);
                 login.setjPasswordField1(dat[1]);
-               
                    this.dispose();
             }
         } while (true);

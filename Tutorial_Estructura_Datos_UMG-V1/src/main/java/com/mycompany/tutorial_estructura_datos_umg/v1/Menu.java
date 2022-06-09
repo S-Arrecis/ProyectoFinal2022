@@ -72,13 +72,23 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 150, 80));
 
         jButton2.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        jButton2.setText("INTRODUCCION");
+        jButton2.setText("ARREGLOS MD");
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 150, 80));
 
         jButton3.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        jButton3.setText("ARREGLOS");
+        jButton3.setText("ARREGLOS UD");
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 150, 80));
 
         jButton4.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
@@ -94,6 +104,11 @@ public class Menu extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jButton6.setText("GRAFOS");
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 150, 80));
 
         jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -152,6 +167,30 @@ public class Menu extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      JFrameReproductor rp = new JFrameReproductor("Am.mp4",(ImageIcon) jLabel4.getIcon(),jLabel5.getText());
+      rp.setVisible(true);
+      this.dispose();
+    
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+          JFrameReproductor rp = new JFrameReproductor("Au.mp4",(ImageIcon) jLabel4.getIcon(),jLabel5.getText());
+      rp.setVisible(true);
+      this.dispose();
+    
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        JFrameReproductor rp = new JFrameReproductor("grafos.mp4",(ImageIcon) jLabel4.getIcon(),jLabel5.getText());
+      rp.setVisible(true);
+      this.dispose();
+
+        
+        
+        
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
